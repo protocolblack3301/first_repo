@@ -41,8 +41,35 @@ while(root!=NULL||root->data!=key){
     return root;
 }
 
-node *successor(){
+node *successor(node *key){
+    //if key has right subtree
+    if(key->right!=NULL){
+        key=key->right;
+        return successor(treemin(key));
+    }
+
+        node *parent=key->parent;
+if(parent->parent!=NULL){
+
+
+
+
+    //if key doesnt have right subtree and is left child of its parent
+    while(parent!=NULL&&key==parent->left){
+        key=parent;
+        parent=parent->parent;
+
+    }
+    //if key doesnt have right subtree and is right child of its parent
+    while(parent!=NULL&&key==parent->right){
+        key=parent;
+        parent=parent->parent;
+    }
+
 }
+    return parent;
+}
+
 
 
 node *treemax(node *root){
@@ -127,8 +154,11 @@ int main(int argc, char **argv)
 	node *newkey=create();
 	root=insert(root,newkey);
 
+    newkey=create();
+    insert(root,newkey);
+
+
 	inorder(root);
-preorder(root);
 
 
 	return 0;
