@@ -10,7 +10,8 @@ typedef struct BST
 }node;
 
 node *itrsearch(node *root,int key){
-while(root!=NULL||root->data!=key){
+while(root!=NULL&&root->data!=key){
+
     if(key<root->data){
         root=root->left;
     }
@@ -41,33 +42,35 @@ while(root!=NULL||root->data!=key){
     return root;
 }
 
-node *successor(node *key){
+
+node *successor(node *key)
+{
     //if key has right subtree
-    if(key->right!=NULL){
+    if(key->right!=NULL)
+    {
         key=key->right;
         return successor(treemin(key));
     }
 
-        node *parent=key->parent;
-if(parent->parent!=NULL){
-
-
-
-
     //if key doesnt have right subtree and is left child of its parent
-    while(parent!=NULL&&key==parent->left){
-        key=parent;
-        parent=parent->parent;
+    node *parent=key->parent;
+    if(parent!=NULL)
+    {
+
+
+        //if key doesnt have right subtree and is right child of its parent
+        while(parent!=NULL&&key==parent->right)
+        {
+            key=parent;
+            parent=parent->parent;
+        }
+
+
 
     }
-    //if key doesnt have right subtree and is right child of its parent
-    while(parent!=NULL&&key==parent->right){
-        key=parent;
-        parent=parent->parent;
-    }
 
-}
-    return parent;
+return parent;
+
 }
 
 
@@ -159,7 +162,17 @@ int main(int argc, char **argv)
 
 
 	inorder(root);
+    int key=10;
 
+node *result=NULL;
+   if((result=successor(itrsearch(root,key)))!=NULL){
+            printf("successor is %d\n",result->data);
+
+
+   }
+   else{
+    printf("no successor found\n");
+   }
 
 	return 0;
  }
