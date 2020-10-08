@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1602029990 source:c:\users\dutchmafia\documents\algorithms\chaining\main.c
+	"helper.h"
+
+1602029974 c:\users\dutchmafia\documents\algorithms\chaining\helper.h
+	<stdio.h>
+	<stdlib.h>
+

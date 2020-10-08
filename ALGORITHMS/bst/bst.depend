@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1291143700 source:c:\users\dutchmafia\documents\algorithms\bst\main.c
+	<stdio.h>
+	<stdlib.h>
+
